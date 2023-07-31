@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+
+<table id="list">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Release<br>Year</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% animes.forEach(function(a) { %>
+      <tr>
+        <td><%= a.title %></td>
+        <td><%= a.releaseYear %></td>
+        <td><%= a.status %></td>
+        <td><a href="/animes/<%= a._id %>">DETAILS</a></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  
+<%- include('../partials/footer') %>
