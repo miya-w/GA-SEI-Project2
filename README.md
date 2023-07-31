@@ -1,6 +1,7 @@
 
 [project-2-brief](https://git.generalassemb.ly/seir66anz/project-2-brief)
 
+```
 npx express-generator -e project2
 cd project2
 # rename app.js to server.js
@@ -13,7 +14,7 @@ touch .gitignore
 git add .
 git commit -m 'First commit'
 # copy git remote && git branch && git push commands from github and paste into the terminal
-
+```
 
 ---
 [Jikan API](https://jikan.moe/)
