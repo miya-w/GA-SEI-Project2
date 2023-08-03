@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const animesCtrl = require('../controllers/animes');
+const ensureLoggedIn = require('../config/ensureLoggedIn');
+
 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -9,14 +11,20 @@ const animesCtrl = require('../controllers/animes');
 
 
 // GET /movies/new
-router.get('/new', animesCtrl.new);
+router.get('/new',ensureLoggedIn, animesCtrl.new);
 // POST /movies
-router.post('/', animesCtrl.create);
+router.post('/',ensureLoggedIn, animesCtrl.create);
 
-// GET /movies
+// GET /anime
 router.get('/', animesCtrl.index);
-// // GET /movies/:id (show functionality) MUST be below new route
+ // GET /anime/:id (show functionality) MUST be below new route
 router.get('/:id', animesCtrl.show);
+//DELETE/animes/:id
+router.get('/delete/:id', ensureLoggedIn, animesCtrl.delete);
+//Edit
+router.get('/update/:id', animesCtrl.showUpdate);
+router.post('/update/:id', animesCtrl.update);
+
 
 
 module.exports = router;

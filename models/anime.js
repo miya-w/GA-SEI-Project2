@@ -12,7 +12,14 @@ const reviewSchema = new Schema({
     min: 1,
     max: 10,
     default: 10
-  }
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  userName: String,
+  userAvatar: String
 }, {
   timestamps: true
 });
@@ -32,7 +39,11 @@ const animeSchema = new mongoose.Schema({
     },
     nowWatching: { type: Boolean, default: true },
      // reviews is an array of review subdocs!
-  reviews: [reviewSchema]
+  reviews: [reviewSchema],
+  cast: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Character'
+  }],
   }, {
     timestamps: true
   });

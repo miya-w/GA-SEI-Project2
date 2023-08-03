@@ -1,5 +1,7 @@
 <%- include('../partials/header') %>
 
+<div>
+
 <section id="show-page">
   <div>Title: </div>
   <div><%= anime.title %></div>
@@ -10,51 +12,100 @@
 
 </section>
 
+<!-- start cast list -->
+<div>Characters:</div>
+<ul>
+  <%- anime.cast.map(c => 
+    `<li>${c.name}</li>`
+  ).join('') %>
+</ul>
+<!-- end cast list -->
+</section>
+
+
+<!-- add to cast form below this comment -->
+<form 
+
+action="/animes/<%- anime._id %>/characters" 
+method="POST"
+>
+  <select name="characterId">
+    <!-- Emit an option for each performer -->
+    <%- characters.map(c => 
+      `<option value="${c._id}">${c.name}</option>`
+    ).join('') %>
+  </select>
+  <button type="submit">Add to Cast</button>
+</form>
+
+
+
 </section>
 <!-- new markup below -->
 <br><br><h2>Reviews</h2>
-<form id="add-review-form" method="POST"
-  action="/animes/<%= anime._id %>/reviews">
-  <label>Review:</label>
-  <textarea name="content"></textarea>
-  <label>Rating:</label>
-  <select name="rating">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10" selected>10</option>
-  </select>
-  <input type="submit" value="Add Review">
-</form>
-
+<% if (user) { %>
+  <form id="add-review-form" method="POST"
+    action="/animes/<%= anime._id %>/reviews">
+    <label>Review:</label>
+    <textarea name="content"></textarea>
+    <label>Rating:</label>
+    <select name="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10" selected>10</option>
+    </select>
+    <input type="submit" value="Add Review">
+  </form>
+<% }%>
 <% if (anime.reviews.length) { %>
-  <table>
+  <table id="list">
     <thead>
       <tr>
+        <th>User</th>
         <th>Date</th>
         <th>Review</th>
         <th>Rating</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
+      <% let total = 0 %>
       <% anime.reviews.forEach(function(r) { %>
+        <% total += r.rating %>
         <tr>
+          <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer" ><%= r.userName %></td>
           <!-- .toLocaleDateString() provides a more friendly date format -->
           <td><%= r.createdAt.toLocaleDateString() %></td>
           <td><%= r.content %></td>
           <td><%= r.rating %></td>
+          <td class="review-delete">
+          <!-- Add this td -->
+          <div >
+            <% if (user?._id.equals(r.user)) { %>
+              <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                <button type="submit">DELETE</button>
+              </form>
+            <% } %>
+            </td>
+          </div>
         </tr>
       <% }); %>
+       <!-- Add a row to display the avg AFTER the forEach iteration  -->
+       <tr>
+        <td colspan="3"></td>
+        <td id="rating"><strong><%= (total / anime.reviews.length).toFixed(1) %></strong></td>
+      </tr>
     </tbody>
   </table>
 <% } else { %>
   <h5>No Reviews Yet</h5>
 <% } %>
-
+</div>
 <%- include('../partials/footer') %>

@@ -1,18 +1,22 @@
 <%- include('../partials/header') %>
 
-<div>Before adding, please ensure that the Performer is not in the following list:</div>
-<section id="badge-container">
-  <% performers.forEach(function(p) { %>
-    <article class="badge"><%= p.name %></article>
-  <% }) %>
+<section >
+  <div class="character-list">
+    <div >
+      <% characters.forEach(function(c) { %>
+        <article class="badge"><%= c.name %></article>
+      <% }) %>
+    </div>
+
+  <div class="form  form-character" >
+      <form id="" action="/characters" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name">
+        <label>Bio:</label>
+        <input type="text" name="bio">
+        <input type="submit" value="Add character">
+      </form>
+  </div>
+</div>
 </section>
-
-<form id="" action="/character" method="POST">
-  <label>Name:</label>
-  <input type="text" name="name">
-  <label>Bio:</label>
-  <input type="text" name="bio">
-  <input type="submit" value="Add character">
-</form>
-
 <%- include('../partials/footer') %>

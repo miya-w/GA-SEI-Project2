@@ -11,7 +11,7 @@ const characterSchema = new Schema({
     },
     bio: {
         type: String,
-        required: true
+        // required: true
     }
   }, {
     timestamps: true

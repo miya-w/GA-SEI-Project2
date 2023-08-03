@@ -1,11 +1,14 @@
 <%- include('../partials/header') %>
-
+<div>
 <table id="list">
   <thead>
     <tr>
       <th>Title</th>
       <th>Release<br>Year</th>
       <th>Status</th>
+      <th>DETAIL</th>
+      <th>UPDATE</th>
+      <th>DELETE</th>
     </tr>
   </thead>
   <tbody>
@@ -14,10 +17,25 @@
         <td><%= a.title %></td>
         <td><%= a.releaseYear %></td>
         <td><%= a.status %></td>
-        <td><a href="/animes/<%= a._id %>">DETAILS</a></td>
+        <td>
+          <button class="button-detail">
+            <a href="/animes/<%= a._id %>">DETAILS</a></button>
+        </td>
+        <td>
+          <button class="button-update">
+          <a href="/animes/update/<%=a.id%>">UPDATE</a>
+        </button>
+        </td>
+        <td>
+          <button class="button-delete">
+          <a href="/animes/delete/<%=a.id%>">DELETE</a>
+        </button>
+        </td>
+        
+    
       </tr>
       <% }); %>
     </tbody>
   </table>
-  
+</div>
 <%- include('../partials/footer') %>
