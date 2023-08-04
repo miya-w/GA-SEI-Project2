@@ -35,7 +35,7 @@ const animeSchema = new mongoose.Schema({
     },
     status: {
       type: String,
-      enum: ['Watching', 'Seen it', 'Not Start', 'Skip it']
+      enum: ['Watching', 'Watched', 'Not Start', 'Skip it']
     },
     nowWatching: { type: Boolean, default: true },
      // reviews is an array of review subdocs!

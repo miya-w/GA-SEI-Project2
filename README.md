@@ -1,66 +1,20 @@
-
-[project-2-brief](https://git.generalassemb.ly/seir66anz/project-2-brief)
-
-```
-npx express-generator -e project2
-cd project2
-# rename app.js to server.js
-npm install
-git init
-touch .env
-touch .gitignore
-# add .env and node_modules to .gitignore
-# visit github.com/new and create a new repo
-git add .
-git commit -m 'First commit'
-# copy git remote && git branch && git push commands from github and paste into the terminal
-```
-
----
-[Jikan API](https://jikan.moe/)
+# 202308 GA SEI Project 2 - My Anime List
+This project is for General Assembly's Software Engineering Immersive, a full stack project in a week.
+![project2]()
 
 
-express-generator
+## Technologies Used
+- EJS
+- HTML5
+- CSS3
+- Node
+- MongoDB
+- Mongoose
+## User Stories & Rules
 
-```
-//-e use -e as the default view engine
-npx express-generator -e project2
-```
+This Web application My Anime List uses CRUD (Create, Read, Update, Delete) functionalities to help users to manage and track the animes.
 
-Add models, controllers
-
-
-install MongoDB
-
-install Mongoose
-```
-npm i mongoose
-mkdir config
-touch config/database.js
-```
-
-```
-// database.js
-const mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASE_URL);
-```
-```
-// server.js
-const logger = require('morgan');
-
-require('dotenv').config();
-```
-
-```javascript
-// database.js
-const mongoose = require('mongoose');
-
-mongoose.connect(process.env.DATABASE_URL);
-	
-// shortcut to mongoose.connection object
-const db = mongoose.connection;
-	
-db.on('connected', function() {
-  console.log(`Connected to MongoDB ${db.name} at ${db.host}:${db.port}`);
-});
-```
+- Add Animes Adding the anime’s title, and release year, and setting the status(Watching, Watched, Not Start, Skip) into the list to manage the collected animes. The animes’ information can be deleted and updated.
+- Animes’s details In Animes’s detail, users can add the characters to the animes, and leave the review and rating.
+- Add Characters Users can add the animes’ name and bio.
+## Code process

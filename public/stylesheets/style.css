@@ -213,7 +213,12 @@ button{
   display: contents;
   flex-direction:  column; 
 }
-  
+
+/* HomePage */
+#container-homepage{
+  text-align: left;
+}
+
 
 /* footer */
 
