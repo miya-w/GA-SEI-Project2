@@ -13,7 +13,7 @@ router.post('/characters',ensureLoggedIn, charactersCtrl.create);
 
 //GET
 router.get('/characters/:id', charactersCtrl.show);
-// POST /movies/:id/performers
+// POST/animes/:id/performers
 router.post('/animes/:id/characters',ensureLoggedIn, charactersCtrl.addToCast); 
 
 

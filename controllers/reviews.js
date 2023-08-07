@@ -16,9 +16,9 @@ async function deleteReview(req, res) {
   if (!anime) return res.redirect('/animes');
   // Remove the review using the remove method available on Mongoose arrays
   anime.reviews.remove(req.params.id);
-  // Save the updated movie doc
+
   await anime.save();
-  // Redirect back to the movie's show view
+
   res.redirect(`/animes/${anime._id}`);
 }
 
@@ -29,14 +29,13 @@ async function create(req, res) {
     req.body.userName = req.user.name;
     req.body.userAvatar = req.user.avatar;
 
-    // We can push (or unshift) subdocs into Mongoose arrays
     anime.reviews.push(req.body);
     try {
-      // Save any changes made to the movie doc
+
       await anime.save();
     } catch (err) {
       console.log(err);
     }
-    // Step 5:  Respond to the Request (redirect if data has been changed)
+   
     res.redirect(`/animes/${anime._id}`);
   }

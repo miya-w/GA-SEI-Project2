@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const reviewSchema = new Schema({
   content: {
     type: String,
-    required: true
+  
   },
   rating: {
     type: Number,
@@ -38,7 +38,7 @@ const animeSchema = new mongoose.Schema({
       enum: ['Watching', 'Watched', 'Not Start', 'Skip it']
     },
     nowWatching: { type: Boolean, default: true },
-     // reviews is an array of review subdocs!
+   
   reviews: [reviewSchema],
   cast: [{
     type: Schema.Types.ObjectId,
@@ -48,5 +48,5 @@ const animeSchema = new mongoose.Schema({
     timestamps: true
   });
   
-  // Compile the schema into a model and export it
+
   module.exports = mongoose.model('Anime', animeSchema);

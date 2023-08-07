@@ -10,8 +10,8 @@ body {
   gap: 5px; */
   background-image: url('../images/background.png');
   font-family: 'Geo', sans-serif;
-font-family: 'Poppins', sans-serif;
-font-family: 'REM', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'REM', sans-serif;
 
 }
 
@@ -217,6 +217,39 @@ button{
 /* HomePage */
 #container-homepage{
   text-align: left;
+}
+
+/* .container-review{
+  border: #111111 dotted;
+  
+
+} */
+
+
+#add-review-form 
+ {
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  /* border: #111111 dotted; */
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+#add-review-form input[type="submit"] {
+  width: 10rem;
+  grid-column: 2 / 3;
+}
+#btn-add-to-cast{
+  border: none;
+ 
+  background-color:#D3D3D3;
+  border: #111111 0.5px;
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
 }
 
 

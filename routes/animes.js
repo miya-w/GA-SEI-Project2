@@ -10,9 +10,9 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 // });
 
 
-// GET /movies/new
+// GET/animes/new
 router.get('/new',ensureLoggedIn, animesCtrl.new);
-// POST /movies
+// POST/animes
 router.post('/',ensureLoggedIn, animesCtrl.create);
 
 // GET /anime
@@ -21,7 +21,8 @@ router.get('/', animesCtrl.index);
 router.get('/:id', animesCtrl.show);
 //DELETE/animes/:id
 router.get('/delete/:id', ensureLoggedIn, animesCtrl.delete);
-//Edit
+
+//Update
 router.get('/update/:id', animesCtrl.showUpdate);
 router.post('/update/:id', animesCtrl.update);
 

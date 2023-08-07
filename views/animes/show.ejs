@@ -3,17 +3,17 @@
 <div>
 
 <section id="show-page">
-  <div>Title: </div>
-  <div><%= anime.title %></div>
-  <div>Release Year: </div>
-  <div><%= anime.releaseYear %></div>
-  <div>Status: </div>
-  <div><%= anime.status %></div>
+  <div><h3>Title:</h3> </div>
+  <div> <p><%= anime.title %></p></div>
+  <div><h3>Release Year: </h3></div>
+  <div><p><%= anime.releaseYear %></p></div>
+  <div><h3>Status:</h3></div>
+  <div><p><%= anime.status %></p></div>
 
 </section>
 
 <!-- start cast list -->
-<div>Characters:</div>
+<div><h3>Characters:</h3></div>
 <ul>
   <%- anime.cast.map(c => 
     `<li>${c.name}</li>`
@@ -35,15 +35,17 @@ method="POST"
       `<option value="${c._id}">${c.name}</option>`
     ).join('') %>
   </select>
-  <button type="submit">Add to Cast</button>
+  <button id="btn-add-to-cast" type="submit">Add to Cast</button>
 </form>
 
 
 
 </section>
+<div class="container-review">
 <!-- new markup below -->
 <br><br><h2>Reviews</h2>
 <% if (user) { %>
+
   <form id="add-review-form" method="POST"
     action="/animes/<%= anime._id %>/reviews">
     <label>Review:</label>
@@ -64,6 +66,7 @@ method="POST"
     <input type="submit" value="Add Review">
   </form>
 <% }%>
+
 <% if (anime.reviews.length) { %>
   <table id="list">
     <thead>
